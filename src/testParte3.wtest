@@ -1,0 +1,45 @@
+import pacientes.*
+import aparatos.*
+
+describe 'test parte 3' {
+	
+	const nicolas = new PacienteResistente(edad=40,nivelDeDolor=10,nivelDeFortaleza=20)
+	const victoria = new PacienteCaprichoso(edad=30,nivelDeDolor=10,nivelDeFortaleza=40)
+	const julian = new PacienteCaprichoso(edad=20,nivelDeDolor=54,nivelDeFortaleza=50)
+	const zoe = new PacienteRapidaRecuperacion(edad=50,nivelDeDolor=14,nivelDeFortaleza=40)
+	
+	const magneto = new Magneto(color='verde')
+	const bici = new Bicicleta(color='rojo')
+	const tramp = new Minitramp(color='blanco')
+	const biciB = new Bicicleta(color='blanco')
+	
+	test 'Nicolás puede hacer la rutina que tiene asignada. Después de hacerla una vez, su nivel de dolor baja a 1.8, 
+		 y su fortaleza sube a 34.' {
+		nicolas.asignarRutina([bici,tramp,bici,magneto])
+		nicolas.realizarRutina()
+		assert.equals(1.8, nicolas.nivelDeDolor())
+		assert.equals(34, nicolas.nivelDeFortaleza())
+	}
+	test 'Victoria no puede hacer la rutina que tiene asignada.' {
+		victoria.asignarRutina([biciB,tramp,biciB,magneto])
+		assert.throwsException({victoria.realizarRutina()})
+		
+	}
+	test 'Julián puede hacer la rutina que tiene asignada. Después de hacerla una vez, su nivel de dolor baja a 29.3, 
+		  y su fortaleza sube a 62.' {
+		julian.asignarRutina([bici,magneto,biciB])
+		julian.realizarRutina()
+		assert.equals(29.3, julian.nivelDeDolor())
+		assert.equals(62, julian.nivelDeFortaleza())
+	}
+	test 'Zoe puede hacer la rutina que tiene asignada. Después de asignar a 2 el valor de decremento de dolor para pacientes
+		 de rápida recuperación, y de que Zoe haga su rutinauna vez, su nivel de dolor baja a 3.4, y su fortaleza sube a 51.' {
+		coeficienteDeRecupeacion.valor(2)
+		zoe.asignarRutina([bici,tramp,bici,magneto])
+		zoe.realizarRutina()
+		assert.equals(3.4, zoe.nivelDeDolor())
+		assert.equals(51, zoe.nivelDeFortaleza())
+	}
+}
+
+

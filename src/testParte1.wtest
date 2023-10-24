@@ -6,9 +6,9 @@ describe 'test parte 1' {
 	const leonardo = new Paciente(edad=40,nivelDeDolor=10,nivelDeFortaleza=20)
 	const milena = new Paciente(edad=3,nivelDeDolor=30,nivelDeFortaleza=50)
 	
-	const magneto = new Magneto()
-	const bici = new Bicicleta()
-	const tramp = new Minitramp()
+	const magneto = new Magneto(color='blanco')
+	const bici = new Bicicleta(color='blanco')
+	const tramp = new Minitramp(color='blanco')
 		
 		
 	test 'Leonardo puede usar los tres aparatos creados, mientras que Milena puede usar sólo el magneto.' {
